@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域情境</title>
+</head>
+<body>
+<h3>跨域情境</h3>
+
+<button>发送请求get</button>
+<p></p>
+
+<button>发送请求post</button>
+<p></p>
+
+<pre>
+1、get和post请求都是成功的，
+   但是返回内容无法展示；浏览器报跨域错误错   
+   Access to XMLHttpRequest at 'http://localhost:4001/case' from origin 'http://localhost:4000' has been blocked by CORS policy: 
+   No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+2、在关闭掉跨域的谷歌浏览器里  
+   open -n /Applications/Google\ Chrome.app/ --args --disable-web-security --user-data-dir=/Users/yaya/Documents/MyChromeDevUserData
+
+   get和post请求都是成功的，
+   返回内容能够展示；浏览器不会报跨域错误错
+</pre>
+<script>
+    var btn = document.getElementsByTagName('button')[0];
+    var text = document.getElementsByTagName('p')[0];
+    btn.addEventListener('click', function () {
+        var xhr = new XMLHttpRequest();
+        var url = 'http://localhost:4001/case';
+        xhr.open('get', url);                 
+        xhr.send(null);                       
+        xhr.onreadystatechange = () => {     
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {  // 如果请求成功
+                text.innerHTML = xhr.response;
+            }
+        }
+    })
+
+    var btn1 = document.getElementsByTagName('button')[1];
+    var text1 = document.getElementsByTagName('p')[1];
+    btn1.addEventListener('click', function () {
+        var xhr = new XMLHttpRequest();
+        var url = 'http://localhost:4001/case';    
+        xhr.open('post', url);                 
+        xhr.send(null);                       
+        xhr.onreadystatechange = () => {     
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {  // 如果请求成功
+                text1.innerHTML = xhr.response;
+            }
+        }
+    })
+</script>
+</body>
+</html>

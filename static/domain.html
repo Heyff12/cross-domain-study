@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请求页面</title>
+    <style>
+        #iframe {
+            border: 2px solid greenyellow;
+            width: 500px;
+            height: 200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #father {
+            border: 2px solid darkturquoise;
+            width: 500px;
+            height: 200px;
+            margin-bottom: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="father">
+    <h2 style="text-align: center;">document.domain跨域demo</h2>
+    <p>hello world</p>
+</div>
+<iframe src="http://qblog.yaya12.com/domain.html" id="iframe" onload="test()"></iframe>
+<pre>
+    1、document.domain的设置是有限制的，我们只能把document.domain设置成自身或更高一级的父域，且主域必须相同。
+    2、案例 <a href="http://jzzx.yaya12.com/domain.html">http://jzzx.yaya12.com/domain.html</a>
+    3、需要双向配合--在原页面进行 域的提升
+    4、此方案仅限主域相同，子域不同的跨域应用场景。
+        实现原理：两个页面都通过js强制设置document.domain为基础主域，就实现了同域。
+</pre>
+<script>
+    var p = document.getElementsByTagName('p')[0];
+    document.domain = 'yaya12.com';//设置成主域
+    function test(){
+        var win_b = document.getElementById('iframe').contentWindow;//可以获取到iframe里的window对象，但该window对象的属性和方法几乎是不可用的
+        var data = win_b.data;
+        alert('稍后获得来自qblog.yaya12.com的数据');
+        p.innerHTML = data;
+    }
+</script>
+</body>
+</html>

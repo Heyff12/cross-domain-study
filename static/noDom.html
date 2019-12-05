@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域限制-dom修改</title>
+</head>
+<body>
+<h3>跨域限制-dom修改</h3>
+
+
+
+
+<iframe src="http://localhost:4001/noDom.html" frameborder="0" id="iframeDom"></iframe>
+<script>
+    var iframeD = document.getElementById('iframeDom') 
+        
+    iframeD.onload = () =>{
+        console.log(iframeD.contentWindow.document)
+        console.log(iframeD.contentWindow.name)
+        console.log(iframeD.contentWindow.localStorage)
+        console.log(iframeD.contentWindow.document.cookie)
+        var h3Dom = iframeD.contentWindow.document.getElementById('h3Dom')
+        console.log(h3Dom)
+        h3Dom.style.color='red'
+        h3Dom.style.backgroundColor='pink'
+    }
+</script>
+</body>
+</html>
