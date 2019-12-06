@@ -6,11 +6,11 @@
 </head>
 <body>
 <script type="text/javascript">
-var message = 'hello world from hash 😶'
+var message = 'hello world from hash -- http://localhost:4001/location_hash.html#getdata'
 if (location.hash === '#getdata') {
     var ifrproxy = document.createElement('iframe');
     ifrproxy.style.display = 'none';
-    ifrproxy.src = 'http://localhost:1000/location_hash/b.html#' + message; // 注意该文件在3000端口下
+    ifrproxy.src = 'http://localhost:4000/location_hash/b.html#' + message; // 注意该文件在4000端口下
     document.body.appendChild(ifrproxy);
 }
 </script>

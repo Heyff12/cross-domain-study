@@ -21,8 +21,10 @@
     </style>
 </head>
 <body>
+        <h2>postMessage跨域</h2>
+
 <div id="father">
-    <p>这里1000端口</p>
+    <p>这里4000端口</p>
     <input type="text"/>
     <button>发送信息</button>
     <p style="text-align: left;">message :  <span></span></p>
@@ -54,7 +56,7 @@ targetOrigin: 是限定消息接收范围，不限制请使用 '*
 
 
 </pre>
-<iframe id="child" src="http://localhost:1001/postmessage.html"></iframe>
+<iframe id="child" src="http://localhost:4001/postmessage.html"></iframe>
 <script>
     var input = document.getElementsByTagName('input')[0];
     var span = document.getElementsByTagName('span')[0];
@@ -63,11 +65,12 @@ targetOrigin: 是限定消息接收范围，不限制请使用 '*
 
     btn.onclick = function () {
         var msg = input.value;
-        frame.postMessage('收到信息：' + msg + ' --from 1000 port！😨', 'http://localhost:1001');
+        frame.postMessage('收到信息：' + msg + ' --from 4000 port！', 'http://localhost:4001');
     }
 
     function receiveMessage (event) {
-        if (event.origin !== 'http://localhost:1001') {
+        console.log('-------4000---receiveMessage------')
+        if (event.origin !== 'http://localhost:4001') {
             return false
         }
         var data = event.data;
