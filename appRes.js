@@ -15,6 +15,15 @@ app.post('/case', (req, res) => {
 });
 
 
+//proxy跨域演示接口---------------------------------------------------------------------------------------------------------
+app.get('/proxy1', (req, res) => {
+    res.send("Hello world from http://localhost:4001/proxy1  :)")
+});
+app.get("/proxy2", function (req, res) {
+    res.send("I am here from http://localhost:4001/proxy2");
+})
+
+
 //跨域cors-------被跨域方处理--------------------------------------------------------------------------------------------------
 app.get('/cros', (req, res) => {
     res.send("Hello world from http://localhost:4001/cros  CROS--get."); // 空格部分为表情，可能在编辑器不会显示
@@ -40,15 +49,11 @@ app.post('/jsonp', function (req, res) {
     var callbackName = req.query.callback;   
     res.send(callbackName+"({'message': 'hello world from http://localhost:4001/jsonp post JSONP!'});");
 });
-
-
-//proxy跨域演示接口---------------------------------------------------------------------------------------------------------
-app.get('/proxy1', (req, res) => {
-    res.send("Hello world from Proxy  :)")
+app.post('/jsonp/iframePost', function (req, res) {
+    var callbackName = req.query.callback;   
+    res.send('hello world from http://localhost:4001/jsonp/iframePost post JSONP!');
 });
-app.get("/proxy2", function (req, res) {
-    res.send("I am here from 4001 ¬_¬");
-})
+
 
 
 app.listen(requestPort, function() {
@@ -56,7 +61,7 @@ app.listen(requestPort, function() {
 });
 
 
-//跨域websocket---------------------------------------------------------------------------------------------------------
+//跨域websocket-------双方协作--------------------------------------------------------------------------------------------------
 // var server = require('http').createServer();
 // var io = require('socket.io')(server);
 // io.on('connection', function (client) {

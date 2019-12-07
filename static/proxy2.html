@@ -43,11 +43,11 @@ proxy: [{
     btn.addEventListener('click', function () {
         var xhr = new XMLHttpRequest();
 
-        var proxy_url = 'http://localhost:1000/proxy2?url=http://localhost:1001/proxy2';
-        // 携带参数{url: 'http://localhost:1001/proxy2'}向http://localhost:1000/proxy2发出请求，获取数据
+        var proxy_url = 'http://localhost:4000/proxy2?url=http://localhost:4001/proxy2';
+        // 携带参数{url: 'http://localhost:4001/proxy2'}向http://localhost:4000/proxy2发出请求，获取数据
         // porxy_url是代理的url，不是最终请求的url，最终请求的url放在问号后面，在后台可以通过req.query.url获取
         // 向porxy_url发出请求，不会存在跨域问题，因为都是运行在3000端口
-        // url为实际请求的地址，向1000/proxy2发出请求的同时携带这个包含url的对象，这个url在这里只是参数，不是请求路径
+        // url为实际请求的地址，向4000/proxy2发出请求的同时携带这个包含url的对象，这个url在这里只是参数，不是请求路径
 
         xhr.open('GET', proxy_url);
         xhr.send();

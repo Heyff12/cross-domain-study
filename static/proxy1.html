@@ -7,7 +7,7 @@
 <body>
 <h2 style="text-align: center;">通过http-proxy-middleware插件设置代理</h2>
 <button>点击跨域</button>
-<p>hello world!</p>
+<p></p>
 
 
 <pre>
@@ -34,15 +34,15 @@ app.use('/', proxy({
     cookieDomainRewrite: 'www.domain1.com'  // 可以为false，表示不修改
 }));
 
-app.listen(3000);
-console.log('Proxy server is listen at port 3000...');
+app.listen(4000);
+console.log('Proxy server is listen at port 4000...');
 </pre>
 <script>
     var btn = document.getElementsByTagName('button')[0];
     var text = document.getElementsByTagName('p')[0];
     btn.addEventListener('click', function () {
         var xhr = new XMLHttpRequest();
-        var url = 'http://localhost:1000/proxy1';    // 向http://localhost:3000/api发出请求，获取数据
+        var url = 'http://localhost:4000/proxy1';    // 向http://localhost:4000/api发出请求，获取数据
         xhr.open('GET', url);
         xhr.send(null);
         xhr.onreadystatechange = () => {
