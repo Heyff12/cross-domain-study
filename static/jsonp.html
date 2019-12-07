@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>JSONP-demo</title>
+    <style>
+    </style>
 </head>
 <body>
         <h3>通过JSONP跨域</h3>
@@ -47,6 +49,13 @@ server.on('request', function(req, res) {
 server.listen('8080');
 console.log('Server is running at port 8080...');
 </pre>
+<a href="http://localhost:4001/jsonp?callback=myFunction"></a>
+<pre>
+    a、img不会触发js执行
+</pre>
+<!-- <img src="http://localhost:4001/jsonp/yyyy?callback=myFunction&rrr" onerror="myFunction()" alt=""> -->
+<iframe src="http://localhost:4001/jsonp?callback=parent.myFunction" frameborder="0"></iframe>
+
 <script>
     function myFunction (data) {
         alert('获取数据成功，2s后改变数据！')
