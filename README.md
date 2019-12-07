@@ -25,4 +25,18 @@ location.hash | 双方协作 | 父子窗口可以彼此读写url | 页面之间�
 document.domain | 双方协作 | document.domain可以修改域 | 主域相同的二级域名页面之间传递数据，可以读取cookie | 否 | 双方都设置domain为主域；被跨域方设置data值；跨域方通过iframe引入被跨域链接，设置function，读取iframe中的data值| 三级 | | 是
 
 
+方法 | 处理方| 原理| 解决的问题 | 是否涉及后端服务 | 推荐等级 | 引入firame
+---|---|---|---|---|---|---
+Access-Control-Allow-Origin | 被跨域方 | W3C的标准 | ajax请求 | 是 | 一级 | 
+proxy | 跨域方 | 服务器之间没有跨域限制 | ajax请求 | 是 | 一级 |
+nginx | 跨域方 | 服务器之间没有跨域限制 | ajax请求 | 是 | 一级 |
+关闭浏览器跨域设置 | 跨域方 | 屏蔽了跨域限制 |  ajax请求/dom读取/cookie、localStorage等读取 | 否 | 不推荐 | 
+webSocket | 双方协作 | HTML5新协议 | ajax请求 | 是  | 二级 | 
+jsonp | 双方协作 | 允许跨域资源嵌入（script不受同源策略影响） | ajax请求 | 是 | 三级 | 
+window.postMessage | 双方协作 | HTML5 的新特性 | 用于页面之间跨域通信；localStorage、cookie等 | 否 | 三级 | 是
+window.name | 双方协作 | 同一个window生命周期内，所有页面共用同一个name | 页面之间传递数据，localStorage等 | 否 |  三级 | 是
+location.hash | 双方协作 | 父子窗口可以彼此读写url | 页面之间传递数据 | 否 | 三级 | 是
+document.domain | 双方协作 | document.domain可以修改域 | 主域相同的二级域名页面之间传递数据，可以读取cookie | 否 |  三级 | 是
+
+
 
