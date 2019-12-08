@@ -34,13 +34,20 @@
         实现原理：两个页面都通过js强制设置document.domain为基础主域，就实现了同域。
 </pre>
 <iframe src="http://qblog.yaya12.com/domain.html" id="iframe" onload="test()"></iframe>
+<iframe src="http://localhost:4001/domain.html" id="iframe1" onload="test1()"></iframe>
 <script>
     var p = document.getElementsByTagName('p')[0];
-    document.domain = 'yaya12.com';//设置成主域
+    document.domain = 'localhost';//设置成主域
     function test(){
         var win_b = document.getElementById('iframe').contentWindow;//可以获取到iframe里的window对象，但该window对象的属性和方法几乎是不可用的
         var data = win_b.data;
         alert('稍后获得来自qblog.yaya12.com的数据');
+        p.innerHTML = data;
+    }
+    function test1(){
+        var win_b = document.getElementById('iframe1').contentWindow;//可以获取到iframe里的window对象，但该window对象的属性和方法几乎是不可用的
+        var data = win_b.data;
+        alert('稍后获得来自http://localhost:4001/domain.html的数据');
         p.innerHTML = data;
     }
 </script>

@@ -39,4 +39,5 @@ location.hash | 双方协作 | 父子窗口可以彼此读写url | 页面之间�
 document.domain | 双方协作 | document.domain可以修改域 | 主域相同的二级域名页面之间传递数据，可以读取cookie | 否 |  三级 | 是
 
 
-
+#### 备注
+form.submit 可以跨域发送post请求

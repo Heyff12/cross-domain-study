@@ -11,7 +11,7 @@
 <script>
     var name = "跨域限制-dom修改-被修改页面"
 
-    document.cookie = "test='test-cookie'"
+    document.cookie = "test=test-cookie;path=/noDom/;domain=localhost:4001"
     localStorage.setItem('test','test-localStorage')
 </script>
 </body>

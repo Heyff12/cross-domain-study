@@ -1,6 +1,7 @@
 var express = require('express'); // 引用express模块
 var app = express(); // 创建一个简单的服务器
-
+// const helmet = require('helmet');
+// app.use(helmet.frameguard({ action: "sameorigin" }));//只允许同域通过iframe引入
 var requestPort = 4000; // 请求页面跑在4000端口
 
 app.use(express.static(__dirname + '/static')); //4000端口的静态文件，即index.html
